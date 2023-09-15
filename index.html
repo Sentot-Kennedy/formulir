@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <div align="center">
+    <div class="border" align="center">
+    <form action="proses.php" onsubmit="return validasiForm()">
+    <table>
+    <h1>FORMULIR PENDAFTARAN</h1>
+    <h2>LOMBA VOLLY</h2>
+    <h3>ANTAR RT RW</h3>
+
+    <tr>
+        <td>Nama Tim</td>
+        <td>:</td>
+        <td></td>
+        <td><input type="text" name="name" id="namatim" required></td>
+    </tr>
+
+    <tr>
+    <td>Jumlah Anggota</td>
+    <td>:</td>
+    <td></td>
+    <td><input type="number" name="juml" id="jumlah" required></td>
+    </tr>
+
+    <tr>
+    <td>Asal</td>
+    <td>:</td>
+    <td>RT </td>
+    <td><input type="number" name="RT" id="rt" required></td>
+    </tr>
+
+    <tr>
+    <td></td>
+    <td></td>
+    <td>RW</td>
+    <td><input type="number" name="RW" id="rw" required></td>
+    </tr>
+
+    <tr>
+    <td>Nama Ketua Tim</td>
+    <td>:</td>
+    <td></td>
+    <td><input type="text" name="nameket" id="namaket" required></td>
+    </tr>
+
+    <tr>
+    <td>No Hp Ketua Tim</td>
+    <td>:</td>
+    <td></td>
+    <td><input type="number" name="nomor" id="nohp" required></td>
+    </tr>
+
+    <tr>
+    <td>Upload Foto</td>
+    <td>:</td>
+    <td></td>
+    <td><input type="file" name="pict" id="foto" required></td>
+    </tr>
+
+    <tr>
+    <td>Tanggal Pendaftaran</td>
+    <td>:</td>
+    <td></td>
+    <td><input type="date" name="tangpen" id="tangpend" required></td>
+    </tr>
+
+    <tr>
+    <td>Jenis Tim</td>
+    <td>:</td>
+    <td></td>
+    <td><input type="radio" name="jenis" value="Putra" checked>Putra
+    <input type="radio" name="jenis" value="Putri" checked>Putri</td>
+    </tr>
+    </table>
+    
+    <td><input type="submit" name="submit" value="Kirim"></td>
+    </div>
+    </div>
+    <script>
+        function validasiForm() {
+            var nama = document.getElementById('namatim').value;
+            var nomorHp = document.getElementById('nohp').value;
+            var foto = document.getElementById('foto').files[0]; 
+
+            if (nama == "" || !/^[a-zA-Z\s]+$/.test(nama)) {
+                alert("Nama Nama Hanya Boleh Berisi Huruf Tidak Boleh Ada Angka.");
+                return false;
+            }
+
+            if (nomorHp.length > 11) {
+                alert("Nomor HP Maksimal 11 Karakter.");
+                return false;
+            }
+
+            if (!/^\d+$/.test(nomorHp)) {
+                alert("Nomor HP Hanya Boleh Berisi Angka.");
+                return false;
+            }
+
+            if (foto && foto.size > 2 * 1024 * 1024) {
+                alert("Ukuran File Terlalu Besar, Maksimal 2 MB.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    </form>
+</body>
+</html>
